@@ -8,7 +8,10 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.Group;
 
 public class GroupHelper extends Group {
-    private float mScaleX;
+    private float mScaleX = 1.0f;
+    private float mScaleY = 1.0f;
+    private float mTranslateX = 1.0f;
+    private float mTranslateY = 1.0f;
     public GroupHelper(Context context) {
         super(context);
     }
@@ -29,10 +32,22 @@ public class GroupHelper extends Group {
             int id = this.mIds[i];
             View view = container.getViewById(id);
             if (view != null) {
-                view.setScaleX(scaleX);
-                view.setScaleY(scaleY);
-                view.setTranslationX(translateX);
-                view.setTranslationY(translateY);
+                if (mScaleX != scaleX) {
+                    view.setScaleX(scaleX);
+                }
+                mScaleX = scaleX;
+                if (mScaleY != scaleY) {
+                    view.setScaleY(scaleY);
+                }
+                mScaleY = scaleY;
+                if (mTranslateX != translateX) {
+                    view.setTranslationX(translateX);
+                }
+                mTranslateX = translateX;
+                if (mTranslateY != translateY) {
+                    view.setTranslationY(translateY);
+                }
+                mTranslateY = translateY;
             }
         }
     }
@@ -40,6 +55,18 @@ public class GroupHelper extends Group {
     @Override
     public void setTranslationX(float translationX) {
         super.setTranslationX(translationX);
+        requestLayout();
+    }
+
+    @Override
+    public void setTranslationY(float translationY) {
+        super.setTranslationY(translationY);
+        requestLayout();
+    }
+
+    public void setTranslationXY(float translationX, float translationY) {
+        setTranslationY(translationY);
+        setTranslationX(translationX);
         requestLayout();
     }
 }

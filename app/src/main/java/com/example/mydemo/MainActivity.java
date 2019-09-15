@@ -23,8 +23,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
 //                startActivity(intent);
-                groupHelper.animate().setDuration(1000).translationY(300);
 //                groupHelper.setVisibility(View.GONE);
+//                groupHelper.setTranslationX(30);
+//                groupHelper.setTranslationY(30);
+                groupHelper.setTranslationXY(30, 30);
+                groupHelper.setScaleX(2.0f);
             }
         });
     }

@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mydemo.view.RedBg;
 
-public class SecondActivity extends AppCompatActivity {
+public class BgTestActivity extends AppCompatActivity {
     private LinearLayout container;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
